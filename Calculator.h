@@ -65,7 +65,8 @@ namespace EngineeringCalculator {
 	private: System::Windows::Forms::Button^ button_null;
 	private: System::Windows::Forms::Button^ button_escape;
 	private: int first_num;
-	private: char button;
+	private: char button = ' ';
+	private: bool is_equal = false;
 
 
 
@@ -114,11 +115,12 @@ namespace EngineeringCalculator {
 			// 
 			// label
 			// 
-			this->label->BackColor = System::Drawing::Color::Gray;
+			this->label->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->label->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label->Location = System::Drawing::Point(75, 9);
+			this->label->Location = System::Drawing::Point(76, 9);
 			this->label->Name = L"label";
 			this->label->Size = System::Drawing::Size(387, 57);
 			this->label->TabIndex = 3;
@@ -129,6 +131,8 @@ namespace EngineeringCalculator {
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::Color::LightYellow;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button1->Location = System::Drawing::Point(12, 188);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(100, 100);
@@ -140,6 +144,8 @@ namespace EngineeringCalculator {
 			// button2
 			// 
 			this->button2->BackColor = System::Drawing::Color::LightYellow;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button2->Location = System::Drawing::Point(127, 188);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(100, 100);
@@ -151,6 +157,8 @@ namespace EngineeringCalculator {
 			// button3
 			// 
 			this->button3->BackColor = System::Drawing::Color::LightYellow;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button3->Location = System::Drawing::Point(245, 188);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(100, 100);
@@ -162,6 +170,8 @@ namespace EngineeringCalculator {
 			// button4
 			// 
 			this->button4->BackColor = System::Drawing::Color::LightYellow;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button4->Location = System::Drawing::Point(12, 304);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(100, 100);
@@ -173,6 +183,8 @@ namespace EngineeringCalculator {
 			// button5
 			// 
 			this->button5->BackColor = System::Drawing::Color::LightYellow;
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button5->Location = System::Drawing::Point(127, 304);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(100, 100);
@@ -184,6 +196,8 @@ namespace EngineeringCalculator {
 			// button6
 			// 
 			this->button6->BackColor = System::Drawing::Color::LightYellow;
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button6->Location = System::Drawing::Point(245, 304);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(100, 100);
@@ -195,6 +209,8 @@ namespace EngineeringCalculator {
 			// button7
 			// 
 			this->button7->BackColor = System::Drawing::Color::LightYellow;
+			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button7->Location = System::Drawing::Point(12, 421);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(100, 100);
@@ -206,6 +222,8 @@ namespace EngineeringCalculator {
 			// button8
 			// 
 			this->button8->BackColor = System::Drawing::Color::LightYellow;
+			this->button8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button8->Location = System::Drawing::Point(127, 421);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(100, 100);
@@ -217,6 +235,8 @@ namespace EngineeringCalculator {
 			// button9
 			// 
 			this->button9->BackColor = System::Drawing::Color::LightYellow;
+			this->button9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button9->Location = System::Drawing::Point(245, 421);
 			this->button9->Name = L"button9";
 			this->button9->Size = System::Drawing::Size(100, 100);
@@ -228,6 +248,8 @@ namespace EngineeringCalculator {
 			// button10
 			// 
 			this->button10->BackColor = System::Drawing::Color::LightYellow;
+			this->button10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button10->Location = System::Drawing::Point(12, 541);
 			this->button10->Name = L"button10";
 			this->button10->Size = System::Drawing::Size(100, 100);
@@ -239,6 +261,8 @@ namespace EngineeringCalculator {
 			// button_dot
 			// 
 			this->button_dot->BackColor = System::Drawing::Color::LightYellow;
+			this->button_dot->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_dot->Location = System::Drawing::Point(127, 541);
 			this->button_dot->Name = L"button_dot";
 			this->button_dot->Size = System::Drawing::Size(100, 100);
@@ -250,6 +274,8 @@ namespace EngineeringCalculator {
 			// button_plus_minus
 			// 
 			this->button_plus_minus->BackColor = System::Drawing::Color::LightYellow;
+			this->button_plus_minus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_plus_minus->Location = System::Drawing::Point(245, 541);
 			this->button_plus_minus->Name = L"button_plus_minus";
 			this->button_plus_minus->Size = System::Drawing::Size(100, 100);
@@ -261,6 +287,8 @@ namespace EngineeringCalculator {
 			// button_equal
 			// 
 			this->button_equal->BackColor = System::Drawing::Color::Orange;
+			this->button_equal->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_equal->Location = System::Drawing::Point(362, 541);
 			this->button_equal->Name = L"button_equal";
 			this->button_equal->Size = System::Drawing::Size(100, 100);
@@ -272,6 +300,8 @@ namespace EngineeringCalculator {
 			// button_plus
 			// 
 			this->button_plus->BackColor = System::Drawing::Color::Orange;
+			this->button_plus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_plus->Location = System::Drawing::Point(362, 421);
 			this->button_plus->Name = L"button_plus";
 			this->button_plus->Size = System::Drawing::Size(100, 100);
@@ -283,6 +313,8 @@ namespace EngineeringCalculator {
 			// button_multiply
 			// 
 			this->button_multiply->BackColor = System::Drawing::Color::Orange;
+			this->button_multiply->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_multiply->Location = System::Drawing::Point(362, 304);
 			this->button_multiply->Name = L"button_multiply";
 			this->button_multiply->Size = System::Drawing::Size(100, 100);
@@ -294,6 +326,8 @@ namespace EngineeringCalculator {
 			// button_minus
 			// 
 			this->button_minus->BackColor = System::Drawing::Color::Orange;
+			this->button_minus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_minus->Location = System::Drawing::Point(362, 188);
 			this->button_minus->Name = L"button_minus";
 			this->button_minus->Size = System::Drawing::Size(100, 100);
@@ -305,6 +339,8 @@ namespace EngineeringCalculator {
 			// button_divide
 			// 
 			this->button_divide->BackColor = System::Drawing::Color::Orange;
+			this->button_divide->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_divide->Location = System::Drawing::Point(362, 72);
 			this->button_divide->Name = L"button_divide";
 			this->button_divide->Size = System::Drawing::Size(100, 100);
@@ -316,6 +352,8 @@ namespace EngineeringCalculator {
 			// button_remainder
 			// 
 			this->button_remainder->BackColor = System::Drawing::Color::Orange;
+			this->button_remainder->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_remainder->Location = System::Drawing::Point(245, 72);
 			this->button_remainder->Name = L"button_remainder";
 			this->button_remainder->Size = System::Drawing::Size(100, 100);
@@ -327,6 +365,8 @@ namespace EngineeringCalculator {
 			// button_power
 			// 
 			this->button_power->BackColor = System::Drawing::Color::Orange;
+			this->button_power->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_power->Location = System::Drawing::Point(127, 72);
 			this->button_power->Name = L"button_power";
 			this->button_power->Size = System::Drawing::Size(100, 100);
@@ -338,6 +378,8 @@ namespace EngineeringCalculator {
 			// button_null
 			// 
 			this->button_null->BackColor = System::Drawing::Color::Orange;
+			this->button_null->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button_null->Location = System::Drawing::Point(12, 72);
 			this->button_null->Name = L"button_null";
 			this->button_null->Size = System::Drawing::Size(100, 100);
@@ -348,7 +390,7 @@ namespace EngineeringCalculator {
 			// 
 			// button_escape
 			// 
-			this->button_escape->BackColor = System::Drawing::Color::OrangeRed;
+			this->button_escape->BackColor = System::Drawing::Color::Red;
 			this->button_escape->Location = System::Drawing::Point(12, 9);
 			this->button_escape->Name = L"button_escape";
 			this->button_escape->Size = System::Drawing::Size(57, 57);
@@ -361,8 +403,9 @@ namespace EngineeringCalculator {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::Gray;
-			this->ClientSize = System::Drawing::Size(487, 653);
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->BackColor = System::Drawing::Color::DimGray;
+			this->ClientSize = System::Drawing::Size(475, 653);
 			this->Controls->Add(this->button_escape);
 			this->Controls->Add(this->button_null);
 			this->Controls->Add(this->button_power);
@@ -385,9 +428,11 @@ namespace EngineeringCalculator {
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"Calculator";
 			this->Text = L"Calculator";
+			this->Load += gcnew System::EventHandler(this, &Calculator::Calculator_Load);
 			this->Click += gcnew System::EventHandler(this, &Calculator::buttonAll_Click);
 			this->ResumeLayout(false);
 
@@ -409,6 +454,9 @@ namespace EngineeringCalculator {
 		this->label->Text = System::Convert::ToString(this->first_num);
 	}
 	private: System::Void button_equal_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (button == ' ')
+			return;
+
 		int second_num = System::Convert::ToInt32(this->label->Text);
 		int res;
 		switch(this->button) {
@@ -422,7 +470,14 @@ namespace EngineeringCalculator {
 				res = this->first_num * second_num;
 				break;
 			case '/':
-				res = this->first_num / second_num;
+				if (second_num == 0) {
+					res = 0;
+					this->label->ForeColor = Color::Red;
+					MessageBox::Show(this, "This is prohibited", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+				else {
+					res = this->first_num / second_num;
+				}
 				break;
 			case '%':
 				res = this->first_num % second_num;
@@ -434,6 +489,7 @@ namespace EngineeringCalculator {
 				}
 				break;
 		}
+		this->is_equal = true;
 		this->label->Text = System::Convert::ToString(res);
 	}
 	private: System::Void button_plus_Click (System::Object^ sender, System::EventArgs^ e) {
@@ -460,14 +516,20 @@ namespace EngineeringCalculator {
 	private: System::Void label_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void buttonAll_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->label->ForeColor = Color::Black;
 		Button^ button = safe_cast<Button^>(sender);
-		if (this->label->Text == "0")
+		if (this->label->Text == "0" || is_equal) {
 			this->label->Text = button->Text;
+			is_equal = false;
+		}
 		else
 			this->label->Text = this->label->Text + button->Text;
 	}
 	private: System::Void button_escape_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
+	}
+	private: System::Void Calculator_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->label->Text = "0";
 	}
 };
 }
